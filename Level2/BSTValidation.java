@@ -15,21 +15,28 @@ public class BSTValidation {
         }
 
         Stack<TreeNode> stack = new Stack<>();
+        int count = 0;
 
-        stack.add(root);
+        stack.add(root); // add the entire root to the Stack
 
         while (!stack.isEmpty()) {
-
             TreeNode current = stack.pop();
 
-            if (current.right != null) {
-                if (current.data > current.right.data) {
+
+            if (current.left != null) {
+                if (current.left.data > current.data) {
                     return false;
                 }
             }
 
-            if (current.left != null) {
-                if (current.data < current.left.data) {
+            if (current.right != null) {
+                if (current.right.data < current.data) {
+                    return false;
+                }
+            }
+
+            if (current.right != null && current.left != null) {
+                if (current.right.data > root.data &&  current.left.data < current.data && count > 0) {
                     return false;
                 }
             }
@@ -42,6 +49,7 @@ public class BSTValidation {
                 stack.push(current.right);
             }
 
+            count++;
 
         }
 
