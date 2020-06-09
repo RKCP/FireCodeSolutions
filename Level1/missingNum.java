@@ -12,21 +12,14 @@ public class missingNum {
 
     public static int findMissingNumber(int[] arr) {
 
-        Arrays.sort(arr);
-
-        int count = 1;
-        int missingNum = 10;
+        int count = 0;
 
         for (int num : arr) {
-            if (num == count) {
-                count ++;
-            } else {
-               missingNum = count;
-               break;
-            }
+            count += num;
         }
 
-        return missingNum;
+        return 55 - count;
+
     }
 
     public static void main(String[] args) {
